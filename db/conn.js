@@ -16,14 +16,17 @@ module.exports = {
       if (db) {
         _db_Contributions = db.db("Contributions");
         _db_Users = db.db("Users");
+        _db = {
+          db_Contributions: _db_Contributions,
+          db_Users: _db_Users,
+        };
         console.log("Successfully connected to MongoDB.");
-        _db = { _db_Contributions, _db_Users };
       }
       return callback(err);
     });
   },
 
   getDb: function () {
-    return _db_Contributions;
+    return _db;
   },
 };

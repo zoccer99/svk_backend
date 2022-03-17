@@ -4,7 +4,7 @@ const userRoutes = express.Router();
 
 // This section will help you get a list of all the records.
 userRoutes.route("/Users").get(function (req, res) {
-    let db_connect = dbo.getDb()._db._db_Users("Users");
+    let db_connect = dbo.getDb().db_Users;
     db_connect
       .collection("Credentials")
       .find({})
