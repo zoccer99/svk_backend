@@ -5,8 +5,6 @@ const client = new MongoClient(Db, {
   useUnifiedTopology: true,
 });
 
-let _db_Contributions;
-let _db_Users;
 let _db;
 
 module.exports = {
