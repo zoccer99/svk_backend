@@ -6,9 +6,9 @@ const dbo = require("../db/conn");
 
 // This section will help you get a list of all the records.
 userRoutes.route("/Users").get(function (req, res) {
-    let db_connect = dbo.getDb().db_Users;
+    let db_connect = dbo.getDb();
     db_connect
-      .collection("Credentials")
+      .collection("Users")
       .find({})
       .toArray(function (err, result) {
         if (err) throw err;
