@@ -24,6 +24,6 @@ module.exports = {
   },
 
   getDb: function () {
-    return _db;
+    return _db_Contributions;
   },
 };

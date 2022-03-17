@@ -10,7 +10,7 @@ const dbo = require("../db/conn");
 
 // This section will help you get a list of all the records.
 recordRoutes.route("/Contribution").get(function (req, res) {
-  let db_connect = dbo.getDb()._dbContributions("Contributions");
+  let db_connect = dbo.getDb();
   db_connect
     .collection("CContributions")
     .find({})
