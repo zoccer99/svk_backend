@@ -22,7 +22,7 @@ recordRoutes.route("/Contribution").get(function (req, res) {
 
 // This section will help you create a new record.
 recordRoutes.route("/Contribution/add").post(function (req, res) {
-  let db_connect = dbo.getDb("Contributions");
+  let db_connect = dbo.getDb().db_Contributions;
   let myobj = {
     autor: req.body.autor,
     titel: req.body.titel,
