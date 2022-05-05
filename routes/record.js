@@ -22,7 +22,7 @@ recordRoutes.route("/Contribution").get(function (req, res) {
 
 // This section will help you create a new record.
 recordRoutes.route("/Contribution/add").post(function (req, res) {
-  let db_connect = dbo.getDb().db_Contributions;
+  let db_connect = dbo.getDb();
   let myobj = {
     autor: req.body.autor,
     titel: req.body.titel,
@@ -34,6 +34,7 @@ recordRoutes.route("/Contribution/add").post(function (req, res) {
   db_connect.collection("CContributions").insertOne(myobj, function (err, res) {
     if (err) throw err;
   });
+  res.sendStatus(200);
 });
 
 // This section will help you update a record by id.
