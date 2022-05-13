@@ -23,8 +23,7 @@ userRoutes.route("/Users").get(function (req, res) {
 });
 
 userRoutes.get("/auth",authentification, function (req, res) {
-  res.status(200);
-  res.send()
+  res.sendStatus(200);
 });
 
 function generateAccessToken(username) {
@@ -39,6 +38,7 @@ userRoutes.post("/Users", (req, res) => {
     .findOne({ username: userLoggingIn.username })
     .then((dbUser) => {
       if (!dbUser) {
+        
         return res.json({
           message: "Invalid Username or password!",
         });
@@ -49,8 +49,9 @@ userRoutes.post("/Users", (req, res) => {
           if (isCorrect) {
             console.log("correct");
             const token = generateAccessToken(dbUser);
-            res.cookie("authorization", token, { httpOnly: true,secure: true });
-            res.sendStatus(200);
+            res.status(200).json({accessToken: token});
+            // res.cookie("authorization", token, { httpOnly: true,secure: true });
+            
             
           } else {
             console.log("false");

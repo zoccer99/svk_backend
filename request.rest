@@ -9,4 +9,8 @@ content-Type: application/json
 
 ###
 
-GET http://localhost:3000/loginUser/
+GET http://localhost:5000/Contribution/
+
+
+###
+GET https://svkretzschau.herokuapp.com/Contribution/
