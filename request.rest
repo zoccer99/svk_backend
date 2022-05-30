@@ -14,3 +14,11 @@ GET http://localhost:5000/Contribution/
 
 ###
 GET https://svkretzschau.herokuapp.com/Contribution/
+
+###
+DELETE https://svkretzschau.herokuapp.com/Contribution/
+Content-Type: application/json
+
+{
+    "id": "62724781786a9046b9abc890"
+}
