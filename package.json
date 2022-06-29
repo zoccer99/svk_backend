@@ -16,5 +16,8 @@
     "express": "^4.17.3",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^4.5.0"
+  },
+  "devDependencies": {
+    "depcheck": "^1.4.3"
   }
 }
