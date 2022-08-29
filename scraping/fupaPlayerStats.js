@@ -50,7 +50,7 @@ const updateDb = (players) => {
 
 
 
-cron.schedule(" 0 10 * * 1", async () => {
+cron.schedule("40 10 * * 1", async () => {
   const players = await fetchAllPlayers();
   updateDb(players);
 });
