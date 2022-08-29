@@ -3,6 +3,7 @@ const fupaIds = require("../data/fupaPlayers.json");
 const fetch = (...args) =>
   import("node-fetch").then(({ default: fetch }) => fetch(...args));
 var cron = require("node-cron");
+const dbo= require("../db/conn")
 
 const fetchPlayer = async (player) => {
   const playerId = fupaIds[player];
@@ -50,8 +51,7 @@ const updateDb = (players) => {
 
 
 
-cron.schedule("40 10 * * 1", async () => {
+cron.schedule("0 10 * * 1", async () => {
   const players = await fetchAllPlayers();
   updateDb(players);
 });
-
