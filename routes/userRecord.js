@@ -39,7 +39,8 @@ userRoutes.post("/Users", (req, res) => {
     .then((dbUser) => {
       if (!dbUser) {
         
-        return res.json({
+        
+        return res.status(404).json({
           message: "Invalid Username or password!",
         });
       }
