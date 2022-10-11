@@ -1,9 +1,8 @@
 const fupaIds = require("../data/fupaPlayers.json");
 
-const fetch = (...args) =>
-  import("node-fetch").then(({ default: fetch }) => fetch(...args));
+const fetch = (...args) => import("node-fetch").then(({ default: fetch }) => fetch(...args));
 var cron = require("node-cron");
-const dbo= require("../db/conn")
+const dbo = require("../db/conn");
 
 const fetchPlayer = async (player) => {
   const playerId = fupaIds[player];
@@ -49,9 +48,8 @@ const updateDb = (players) => {
   }
 };
 
-
-
-cron.schedule("16 16 * * 1", async () => {
+module.exports = cron.schedule("0 10 * * 1", async () => { //every monday at 10 AM;
+  console.log("scraping...")
   const players = await fetchAllPlayers();
   updateDb(players);
 });
