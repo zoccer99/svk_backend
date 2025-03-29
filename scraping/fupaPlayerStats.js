@@ -8,6 +8,7 @@ const dbo = require("../db/conn");
 const fetchPlayer = async (player) => {
   const playerId = fupaIds[player];
   const queryUrl = "https://api.fupa.net/v1/profiles/" + playerId + "/details";
+  var payload = null;
   try {
     console.log(`fetching: ${playerId}`);
     const response = await fetch(queryUrl);
@@ -30,7 +31,8 @@ const fetchPlayer = async (player) => {
 const fetchAllPlayers = async () => {
   let allPlayers = [];
   for (let player in fupaIds) {
-    allPlayers.push(await fetchPlayer(player));
+    var stats = await fetchPlayer(player);
+    if (stats) allPlayers.push(stats); // nur gültige Spieler
   }
   console.log(allPlayers);
   return allPlayers;
