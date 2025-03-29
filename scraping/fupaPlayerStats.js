@@ -18,7 +18,7 @@ const fetchPlayer = async (player) => {
   }
 
   var season = payload.playerRole.seasons.find(
-    (s) => s.slug === "sv-kretzschau-m1-2024-25"
+    (s) => s.team && s.team.slug === "sv-kretzschau-m1-2024-25"
   );
 
   if (!season) {
