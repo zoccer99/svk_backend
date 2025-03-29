@@ -52,4 +52,6 @@ module.exports = cron.schedule("*/5 * * * *", async () => { //every monday at 10
   console.log("scraping...")
   const players = await fetchAllPlayers();
   updateDb(players);
+}, {
+  scheduled: false
 });
