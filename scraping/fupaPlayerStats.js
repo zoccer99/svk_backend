@@ -16,9 +16,23 @@ const fetchPlayer = async (player) => {
   } catch (err) {
     console.log(`ERROR: fetching -> ${err}`);
   }
-  const matches = payload.playerRole.seasons[0].statistics.matches;
-  const goals = payload.playerRole.seasons[0].statistics.goals;
-  const assists = payload.playerRole.seasons[0].statistics.assists;
+
+  var season = payload.playerRole.seasons.find(
+    (s) => s.slug === "sv-kretzschau-m1-2024-25"
+  );
+
+  if (!season) {
+    console.log(`Keine passende Saison für ${playerId}`);
+    return null;
+  }
+
+  var stats = season.statistics
+
+  
+
+  const matches = stats.matches;
+  const goals = stats.goals;
+  const assists = stats.assists;
   const playerStats = {
     name: player,
     matches: matches,
