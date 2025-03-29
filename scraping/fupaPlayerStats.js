@@ -7,9 +7,15 @@ const dbo = require("../db/conn");
 const fetchPlayer = async (player) => {
   const playerId = fupaIds[player];
   const queryUrl = "https://api.fupa.net/v1/profiles/" + playerId + "/details";
-  console.log(`fetching: ${playerId}`)
-  const response = await fetch(queryUrl);
-  const payload = await response.json();
+  try {
+
+    console.log(`fetching: ${playerId}`)
+    const response = await fetch(queryUrl);
+    const payload = await response.json();
+  }
+  catch(err) {
+    console.log(`ERROR: fetching -> ${err}`)
+  }
   const matches = payload.playerRole.seasons[0].statistics.matches;
   const goals = payload.playerRole.seasons[0].statistics.goals;
   const assists = payload.playerRole.seasons[0].statistics.assists;
@@ -49,7 +55,7 @@ const updateDb = (players) => {
   }
 };
 
-module.exports = cron.schedule("*/1 * * * *", async () => { //every monday at 10 AM;
+module.exports = cron.schedule("* * * * *", async () => { //every monday at 10 AM;
   console.log("scraping...")
   const players = await fetchAllPlayers();
   updateDb(players);
