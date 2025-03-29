@@ -7,6 +7,7 @@ const dbo = require("../db/conn");
 const fetchPlayer = async (player) => {
   const playerId = fupaIds[player];
   const queryUrl = "https://api.fupa.net/v1/profiles/" + playerId + "/details";
+  console.log(`fetching: ${playerId}`)
   const response = await fetch(queryUrl);
   const payload = await response.json();
   const matches = payload.playerRole.seasons[0].statistics.matches;
@@ -48,7 +49,7 @@ const updateDb = (players) => {
   }
 };
 
-module.exports = cron.schedule("*/5 * * * *", async () => { //every monday at 10 AM;
+module.exports = cron.schedule("*/1 * * * *", async () => { //every monday at 10 AM;
   console.log("scraping...")
   const players = await fetchAllPlayers();
   updateDb(players);
