@@ -12,7 +12,7 @@ const fetchPlayer = async (player) => {
   try {
     console.log(`fetching: ${playerId}`);
     const response = await fetch(queryUrl);
-    const payload = await response.json();
+    payload = await response.json();
   } catch (err) {
     console.log(`ERROR: fetching -> ${err}`);
   }
