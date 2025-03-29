@@ -32,6 +32,7 @@ recordRoutes.route("/Contribution/add").post(function (req, res) {
     category: req.body.category,
     zeit: req.body.zeit,
   };
+  console.log(myobj)
   db_connect.collection("CContributions").insertOne(myobj, function (err, res) {
     if (err) throw err;
   });

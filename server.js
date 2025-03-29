@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(require("./routes/record"));
 app.use(require("./routes/userRecord"));
 app.use(require("./routes/statsRoute"));
-const players = require("./scraping/fupaPlayerStats")
+const scheduler = require("./scraping/fupaPlayerStats")
 
 // get driver connection
 const dbo = require("./db/conn");
@@ -26,4 +26,5 @@ app.listen(port, () => {
 
   });
   console.log(`Server is running on port: ${port}`);
+  scheduler;
 });
