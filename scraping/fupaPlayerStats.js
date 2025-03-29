@@ -1,6 +1,7 @@
 const fupaIds = require("../data/fupaPlayers.json");
 
-const fetch = (...args) => import("node-fetch").then(({ default: fetch }) => fetch(...args));
+const fetch = (...args) =>
+  import("node-fetch").then(({ default: fetch }) => fetch(...args));
 var cron = require("node-cron");
 const dbo = require("../db/conn");
 
@@ -8,13 +9,11 @@ const fetchPlayer = async (player) => {
   const playerId = fupaIds[player];
   const queryUrl = "https://api.fupa.net/v1/profiles/" + playerId + "/details";
   try {
-
-    console.log(`fetching: ${playerId}`)
+    console.log(`fetching: ${playerId}`);
     const response = await fetch(queryUrl);
     const payload = await response.json();
-  }
-  catch(err) {
-    console.log(`ERROR: fetching -> ${err}`)
+  } catch (err) {
+    console.log(`ERROR: fetching -> ${err}`);
   }
   const matches = payload.playerRole.seasons[0].statistics.matches;
   const goals = payload.playerRole.seasons[0].statistics.goals;
@@ -55,10 +54,18 @@ const updateDb = (players) => {
   }
 };
 
-module.exports = cron.schedule("* * * * *", async () => { //every monday at 10 AM;
-  console.log("scraping...")
-  const players = await fetchAllPlayers();
-  updateDb(players);
-}, {
-  scheduled: false
-});
+module.exports = {
+  cronJob: cron.schedule(
+    "0 10 * * 1",
+    async () => {
+      console.log("scraping (Monday 10AM)");
+      const players = await fetchAllPlayers();
+      updateDb(players);
+    },
+    {
+      scheduled: false,
+    }
+  ),
+  fetchAllPlayers,
+  updateDb,
+};
