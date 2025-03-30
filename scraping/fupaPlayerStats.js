@@ -3,6 +3,7 @@ const fupaIds = require("../data/fupaPlayers.json");
 const fetch = (...args) => import("node-fetch").then(({ default: fetch }) => fetch(...args));
 var cron = require("node-cron");
 const dbo = require("../db/conn");
+const { logDbAction } = require("../data/logging/logger");
 
 const fetchPlayer = async (player) => {
   const playerId = fupaIds[player];
@@ -24,15 +25,15 @@ const fetchPlayer = async (player) => {
 const fetchAllPlayers = async () => {
   let allPlayers = [];
   for (let player in fupaIds) {
-    allPlayers.push(await fetchPlayer(player));
+    const temp = await fetchPlayer(player);
+    console.log(player)
+    allPlayers.push(temp);
   }
-  console.log(allPlayers);
   return allPlayers;
 };
 
 const updateDb = (players) => {
   let db_connect = dbo.getDb();
-  console.log("hasdila");
   for (let player in players) {
     console.log(players[player]["name"]);
     db_connect.collection("PlayerStats").updateOne(
@@ -48,8 +49,11 @@ const updateDb = (players) => {
   }
 };
 
-module.exports = cron.schedule("0 10 * * 1", async () => { //every monday at 10 AM;
-  console.log("scraping...")
+module.exports = cron.schedule("0 8 * * 1", async () => { //every monday at 10 AM;
+  logDbAction("PROCESS", "scraping starts..")
   const players = await fetchAllPlayers();
+  logDbAction("PROCESS", "updating db..")
   updateDb(players);
+  logDbAction("PROCESS", "updating db finished..")
+
 });

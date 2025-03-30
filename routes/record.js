@@ -1,5 +1,6 @@
 const express = require("express");
 const mongo = require("mongodb");
+const {logDbAction} = require("../data/logging/logger")
 
 // recordRoutes is an instance of the express router.
 // We use it to define our routes.
@@ -12,6 +13,11 @@ const dbo = require("../db/conn");
 // This section will help you get a list of all the records.
 recordRoutes.route("/Contribution").get(function (req, res) {
   let db_connect = dbo.getDb();
+  const clientIp = req.ip;
+  const userAgent = req.headers["user-agent"];
+  const playerName = req.body.name;
+
+  logDbAction("API_REQUEST", `/CONTRIBUTION, IP: ${clientIp}, UA: ${userAgent}, Player: ${playerName}`);
   db_connect
     .collection("CContributions")
     .find({})
