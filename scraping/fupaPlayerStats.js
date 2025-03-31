@@ -1,7 +1,6 @@
 const fupaIds = require("../data/fupaPlayers.json");
 
-const fetch = (...args) =>
-  import("node-fetch").then(({ default: fetch }) => fetch(...args));
+const fetch = (...args) => import("node-fetch").then(({ default: fetch }) => fetch(...args));
 var cron = require("node-cron");
 const dbo = require("../db/conn");
 const { logDbAction } = require("../data/logging/logger");
@@ -49,13 +48,11 @@ const fetchAllPlayers = async () => {
     var stats = await fetchPlayer(player);
     if (stats) allPlayers.push(stats); // nur gültige Spieler
   }
-  console.log(allPlayers);
   return allPlayers;
 };
 
 const updateDb = (players) => {
   let db_connect = dbo.getDb();
-  console.log("hasdila");
   for (let player in players) {
     console.log(players[player]["name"]);
     db_connect.collection("PlayerStats").updateOne(
@@ -75,10 +72,14 @@ module.exports = {
   cronJob: cron.schedule(
     "0 10 * * 1",
     async () => {
+
       logDbAction("PROCESS", "started scraping..");
       const players = await fetchAllPlayers();
       logDbAction("PROCESS", "updating DB..")
+
       updateDb(players);
+      logDbAction("PROCESS", "updated db succesfully")
+
     },
     {
       scheduled: false,

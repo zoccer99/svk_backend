@@ -1,5 +1,5 @@
 const express = require("express");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 
@@ -22,7 +22,7 @@ userRoutes.route("/Users").get(function (req, res) {
     });
 });
 
-userRoutes.get("/auth",authentification, function (req, res) {
+userRoutes.get("/auth", authentification, function (req, res) {
   res.sendStatus(200);
 });
 
@@ -38,8 +38,6 @@ userRoutes.post("/Users", (req, res) => {
     .findOne({ username: userLoggingIn.username })
     .then((dbUser) => {
       if (!dbUser) {
-        
-        
         return res.status(404).json({
           message: "Invalid Username or password!",
         });
@@ -50,13 +48,13 @@ userRoutes.post("/Users", (req, res) => {
           if (isCorrect) {
             console.log("correct");
             const token = generateAccessToken(dbUser);
-            res.status(200).json({accessToken: token});
+            res.status(200).json({ accessToken: token });
             // res.cookie("authorization", token, { httpOnly: true,secure: true });
-            
-            
           } else {
             console.log("false");
-            return res.status(403).json({ message: "invalid username or password!" });
+            return res
+              .status(403)
+              .json({ message: "invalid username or password!" });
           }
         });
     });
