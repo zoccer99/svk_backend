@@ -4,6 +4,7 @@ const fetch = (...args) =>
   import("node-fetch").then(({ default: fetch }) => fetch(...args));
 var cron = require("node-cron");
 const dbo = require("../db/conn");
+const { logDbAction } = require("../data/logging/logger");
 
 const fetchPlayer = async (player) => {
   const playerId = fupaIds[player];
@@ -74,8 +75,9 @@ module.exports = {
   cronJob: cron.schedule(
     "0 10 * * 1",
     async () => {
-      console.log("scraping (Monday 10AM)");
+      logDbAction("PROCESS", "started scraping..");
       const players = await fetchAllPlayers();
+      logDbAction("PROCESS", "updating DB..")
       updateDb(players);
     },
     {
