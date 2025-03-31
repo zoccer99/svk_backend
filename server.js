@@ -4,6 +4,7 @@ const cors = require("cors");
 
 require("dotenv").config({ path: "./config.env" });
 const port = process.env.PORT || 5000;
+app.set("trust proxy", true);
 app.use(
   cors({
     //origin: "http://localhost:3000",
