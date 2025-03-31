@@ -8,11 +8,31 @@ const { logDbAction } = require("../data/logging/logger");
 const fetchPlayer = async (player) => {
   const playerId = fupaIds[player];
   const queryUrl = "https://api.fupa.net/v1/profiles/" + playerId + "/details";
-  const response = await fetch(queryUrl);
-  const payload = await response.json();
-  const matches = payload.playerRole.seasons[0].statistics.matches;
-  const goals = payload.playerRole.seasons[0].statistics.goals;
-  const assists = payload.playerRole.seasons[0].statistics.assists;
+  var payload = null;
+  try {
+    console.log(`fetching: ${playerId}`);
+    const response = await fetch(queryUrl);
+    payload = await response.json();
+  } catch (err) {
+    console.log(`ERROR: fetching -> ${err}`);
+  }
+
+  var season = payload.playerRole.seasons.find(
+    (s) => s.team && s.team.slug === "sv-kretzschau-m1-2024-25"
+  );
+
+  if (!season) {
+    console.log(`Keine passende Saison für ${playerId}`);
+    return null;
+  }
+
+  var stats = season.statistics
+
+  
+
+  const matches = stats.matches;
+  const goals = stats.goals;
+  const assists = stats.assists;
   const playerStats = {
     name: player,
     matches: matches,
@@ -25,9 +45,8 @@ const fetchPlayer = async (player) => {
 const fetchAllPlayers = async () => {
   let allPlayers = [];
   for (let player in fupaIds) {
-    const temp = await fetchPlayer(player);
-    console.log(player)
-    allPlayers.push(temp);
+    var stats = await fetchPlayer(player);
+    if (stats) allPlayers.push(stats); // nur gültige Spieler
   }
   return allPlayers;
 };
@@ -49,11 +68,21 @@ const updateDb = (players) => {
   }
 };
 
-module.exports = cron.schedule("0 8 * * 1", async () => { //every monday at 10 AM;
-  logDbAction("PROCESS", "scraping starts..")
-  const players = await fetchAllPlayers();
-  logDbAction("PROCESS", "updating db..")
-  updateDb(players);
-  logDbAction("PROCESS", "updating db finished..")
+module.exports = {
+  cronJob: cron.schedule(
+    "0 10 * * 1",
+    async () => {
+      logDbAction("PROCESS", "scraping starts")
+      const players = await fetchAllPlayers();
+      logDbAction("PROCESS", "updating db")
+      updateDb(players);
+      logDbAction("PROCESS", "updated db succesfully")
 
-});
+    },
+    {
+      scheduled: false,
+    }
+  ),
+  fetchAllPlayers,
+  updateDb,
+};
