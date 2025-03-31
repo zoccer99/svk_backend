@@ -6,12 +6,12 @@ app.set("trust proxy", true);
 
 app.use(
   cors({
-    origin: "https://sv-kretzschau.de",
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    // origin: "https://sv-kretzschau.de",
+    //methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
   })
 );
-app.options("*", cors());
+// app.options("*", cors());
 
 app.use(express.json());
 app.use(require("./routes/record"));
