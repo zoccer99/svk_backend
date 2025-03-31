@@ -17,7 +17,7 @@ const fetchPlayer = async (player) => {
     console.log(`ERROR: fetching -> ${err}`);
   }
 
-  var season = payload.playerRole.seasons.find(
+  let season = payload.playerRole?.seasons?.find(
     (s) => s.team && s.team.slug === "sv-kretzschau-m1-2024-25"
   );
 
