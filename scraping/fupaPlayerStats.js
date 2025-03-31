@@ -72,9 +72,11 @@ module.exports = {
   cronJob: cron.schedule(
     "0 10 * * 1",
     async () => {
-      logDbAction("PROCESS", "scraping starts")
+
+      logDbAction("PROCESS", "started scraping..");
       const players = await fetchAllPlayers();
-      logDbAction("PROCESS", "updating db")
+      logDbAction("PROCESS", "updating DB..")
+
       updateDb(players);
       logDbAction("PROCESS", "updated db succesfully")
 
