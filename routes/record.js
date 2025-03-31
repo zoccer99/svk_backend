@@ -13,7 +13,7 @@ const { logDbAction } = require("./utils/logger");
 // This section will help you get a list of all the records.
 recordRoutes.route("/Contribution").get(function (req, res) {
   let db_connect = dbo.getDb();
-  const clientIp = req.ip;
+  const clientIp = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
   const userAgent = req.headers["user-agent"];
 
   logDbAction("GET", `/Contribution, IP: ${clientIp}, UA: ${userAgent}`)
