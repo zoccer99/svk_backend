@@ -1,2 +1,4 @@
 /node_modules
-.test.js
+./test.js
+./Dockerfile
+./docker-compose.yml
