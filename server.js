@@ -6,7 +6,7 @@ app.set("trust proxy", true);
 
 app.use(
   cors({
-  origin: ["http://localhost:3000", "https://sv-kretzschau.de"],
+  origin: ["http://localhost:3000", "https://sv-kretzschau.de", "192.168.2.198:3000"],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization", "Origin", "X-Requested-With", "Accept", "Access-Control-Allow-Credentials", "Access-Control-Allow-Origin"],
   credentials: true,
