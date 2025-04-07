@@ -6,6 +6,7 @@ const statsRoutes = express.Router();
 const dbo = require("../db/conn");
 
 statsRoutes.route("/playerStats").get((req, res) => {
+    console.log("Origin:", req.get("Origin"));
     let db_connect = dbo.getDb();
     db_connect
       .collection("PlayerStats")

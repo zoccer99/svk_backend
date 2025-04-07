@@ -1,24 +1,27 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-
 require("dotenv").config({ path: "./config.env" });
-const port = process.env.PORT || 5000;
 app.set("trust proxy", true);
+
 app.use(
   cors({
-    //origin: "http://localhost:3000",
-    credentials: true,
-  })
+  origin: ["http://localhost:3000", "https://sv-kretzschau.de"],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization", "Origin", "X-Requested-With", "Accept", "Access-Control-Allow-Credentials", "Access-Control-Allow-Origin"],
+  credentials: true,
+})
 );
+
 app.use(express.json());
+app.options("*", cors());
 app.use(require("./routes/record"));
 app.use(require("./routes/userRecord"));
 app.use(require("./routes/statsRoute"));
 const { cronJob, fetchAllPlayers, updateDb } = require("./scraping/fupaPlayerStats");
-
-// get driver connection
 const dbo = require("./db/conn");
+
+const port = process.env.PORT || 5000;
 
 app.listen(port, async () => {
   // perform a database connection when server starts
