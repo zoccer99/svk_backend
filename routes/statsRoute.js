@@ -17,7 +17,7 @@ statsRoutes.route("/playerStats").get((req, res) => {
       });
   });
 
-  
+
   statsRoutes.route("/track-player-click").post((req, res) => {
     const { playerId } = req.body;
   
@@ -47,3 +47,4 @@ statsRoutes.route("/playerStats").get((req, res) => {
     });
   });
   
+  module.exports = statsRoutes;
