@@ -8,7 +8,8 @@ app.set("trust proxy", true);
 // CORS korrekt konfigurieren
 const allowedOrigins = [
   "https://sv-kretzschau.de",
-  "http://192.168.2.198:3000"  // Dev
+  "https://www.sv-kretzschau.de",
+  "http://localhost:3000"  // Dev
 ];
 
 app.use(cors({
@@ -16,6 +17,7 @@ app.use(cors({
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
+      console.log("origin", origin)
       callback(new Error("Not allowed by CORS"));
     }
   },
