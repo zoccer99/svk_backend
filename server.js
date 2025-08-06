@@ -8,9 +8,12 @@ app.set("trust proxy", true);
 // CORS korrekt konfigurieren
 const allowedOrigins = [
   "https://sv-kretzschau.de",
-  "https://www.sv-kretzschau.de",
-  "http://localhost:3000"  // Dev
+  "https://www.sv-kretzschau.de",          // ← NEU
+  "https://svkretzschau.duckdns.org",     // ← NEU
+  "http://192.168.2.198:3000",
+  "http://localhost:3000"
 ];
+
 
 app.use(cors({
   origin: function (origin, callback) {
