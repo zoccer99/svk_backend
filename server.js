@@ -33,7 +33,7 @@ app.use(express.json());
 
 // Routen
 app.use(require("./routes/record"));
-app.use(require("./routes/UserRecord"));
+app.use(require("./routes/userRecord"));
 app.use(require("./routes/statsRoute"));
 
 const { cronJob, fetchAllPlayers, updateDb } = require("./scraping/fupaPlayerStats");
