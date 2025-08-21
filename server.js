@@ -30,6 +30,7 @@ app.use(cors({
 }));
 
 app.use(express.json());
+const dbo = require("./db/conn");
 
 // Routen
 app.use(require("./routes/record"));
@@ -37,7 +38,6 @@ app.use(require("./routes/userRecord"));
 app.use(require("./routes/statsRoute"));
 
 const { cronJob, fetchAllPlayers, updateDb } = require("./scraping/fupaPlayerStats");
-const dbo = require("./db/conn");
 
 const port = process.env.PORT || 5000;
 
