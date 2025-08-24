@@ -30,14 +30,14 @@ function generateAccessToken(username) {
   return jwt.sign(username, process.env.TOKEN_SECRET, { expiresIn: "1800s" });
 }
 
-userRoutes.post("/Users", (req, res) => {
+userRoutes.route("/Users").post((req, res) => {
   const userLoggingIn = req.body;
   let db_connect = dbo.getDb();
   db_connect
     .collection("Users")
     .findOne({ username: userLoggingIn.username })
     .then((dbUser) => {
-      if (!dbUser) {
+      if (!dbUser) { 
         return res.status(404).json({
           message: "Invalid Username or password!",
         });

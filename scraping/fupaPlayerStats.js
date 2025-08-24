@@ -6,6 +6,8 @@ const dbo = require("../db/conn");
 const { logDbAction } = require("../data/logging/logger");
 
 const fetchPlayer = async (player) => {
+  const SEASON_YEAR = new Date().getFullYear();
+  const NEXT_YEAR = (SEASON_YEAR + 1).toString().slice()
   const playerId = fupaIds[player];
   const queryUrl = "https://api.fupa.net/v1/profiles/" + playerId + "/details";
   var payload = null;
@@ -18,7 +20,7 @@ const fetchPlayer = async (player) => {
   }
 
   let season = payload.playerRole?.seasons?.find(
-    (s) => s.team && s.team.slug === "sv-kretzschau-m1-2024-25"
+    (s) => s.team && s.team.slug === `sv-kretzschau-m1-${SEASON_YEAR}-26`
   );
 
   if (!season) {
