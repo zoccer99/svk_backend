@@ -39,24 +39,45 @@ app.use(require("./routes/record"));
 app.use(require("./routes/userRecord"));
 app.use(require("./routes/statsRoute"));
 
+// 1) Statisch: Dateien unter /api/images/... ausliefern
 app.use(
-  "api/images",
-  express.static(path.join(__dirname, "api/images"))
+  "/api/images",
+  express.static(path.join(__dirname, "api/images"), {
+    // Optional: ETag/Cache-Control feinjustieren
+    maxAge: "7d",
+    etag: true,
+    index: false,
+  })
 );
 
-
+// 2) API: Liste der Dateien in einem "Album"-Ordner liefern
 app.get("/api/images/:album", (req, res) => {
   const album = req.params.album;
   const dirPath = path.join(__dirname, "api/images", album);
 
-  fs.readdir(dirPath, (err, files) => {
-    if (err) return res.status(500).json({ error: "Ordner nicht gefunden" });
+  fs.readdir(dirPath, { withFileTypes: true }, (err, entries) => {
+    if (err) {
+      console.error(err);
+      return res.status(404).json({ error: "Ordner nicht gefunden" });
+    }
 
-    // URLs der Bilder zurückgeben
-    const urls = files.map(file => `api/images/${album}/${file}`);
+    // Nur reguläre Dateien mit Bild-Endungen
+    const exts = new Set([".jpg", ".jpeg", ".png", ".gif", ".webp", ".avif"]);
+    const files = entries
+      .filter((d) => d.isFile() && exts.has(path.extname(d.name).toLowerCase()))
+      .map((d) => d.name)
+      .sort((a, b) => a.localeCompare(b, "de"));
+
+    // Absolute URLs bauen (inkl. URL-Encoding)
+    const base = `${req.protocol}://${req.get("host")}`;
+    const urls = files.map(
+      (file) => `${base}/api/images/${encodeURIComponent(album)}/${encodeURIComponent(file)}`
+    );
+
     res.json(urls);
   });
 });
+
 
 
 const { cronJob, fetchAllPlayers, updateDb } = require("./scraping/fupaPlayerStats");
