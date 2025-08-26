@@ -40,7 +40,7 @@ app.use(require("./routes/userRecord"));
 app.use(require("./routes/statsRoute"));
 
 app.use(
-  "/images",
+  "api/images",
   express.static(path.join(__dirname, "api/images"))
 );
 
@@ -53,7 +53,7 @@ app.get("/api/images/:album", (req, res) => {
     if (err) return res.status(500).json({ error: "Ordner nicht gefunden" });
 
     // URLs der Bilder zurückgeben
-    const urls = files.map(file => `/images/${album}/${file}`);
+    const urls = files.map(file => `api/images/${album}/${file}`);
     res.json(urls);
   });
 });
