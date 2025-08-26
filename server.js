@@ -1,3 +1,4 @@
+const path = require("path")
 const express = require("express");
 const cors = require("cors");
 const app = express();
@@ -36,6 +37,11 @@ const dbo = require("./db/conn");
 app.use(require("./routes/record"));
 app.use(require("./routes/userRecord"));
 app.use(require("./routes/statsRoute"));
+
+app.use(
+  "/images",
+  express.static(path.join(__dirname, "api/images"))
+);
 
 const { cronJob, fetchAllPlayers, updateDb } = require("./scraping/fupaPlayerStats");
 
