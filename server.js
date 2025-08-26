@@ -1,4 +1,5 @@
 const path = require("path")
+const fs = require("fs");
 const express = require("express");
 const cors = require("cors");
 const app = express();
@@ -42,6 +43,21 @@ app.use(
   "/images",
   express.static(path.join(__dirname, "api/images"))
 );
+
+
+app.get("/api/images/:album", (req, res) => {
+  const album = req.params.album;
+  const dirPath = path.join(__dirname, "api/images", album);
+
+  fs.readdir(dirPath, (err, files) => {
+    if (err) return res.status(500).json({ error: "Ordner nicht gefunden" });
+
+    // URLs der Bilder zurückgeben
+    const urls = files.map(file => `/images/${album}/${file}`);
+    res.json(urls);
+  });
+});
+
 
 const { cronJob, fetchAllPlayers, updateDb } = require("./scraping/fupaPlayerStats");
 
