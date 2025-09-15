@@ -1,0 +1,114 @@
+[2025-09-15T20:17:51.174Z] [fetching: andreas-ludwig-780952] undefined
+[2025-09-15T20:17:51.934Z] [Keine passende Saison für andreas-ludwig-780952] undefined
+[2025-09-15T20:17:51.934Z] [fetching: andre-barth-311783] undefined
+[2025-09-15T20:17:52.058Z] [Keine passende Saison für andre-barth-311783] undefined
+[2025-09-15T20:17:52.058Z] [fetching: ole-friedrich-304836] undefined
+[2025-09-15T20:17:52.190Z] [fetching: manuel-lages-311781] undefined
+[2025-09-15T20:17:52.310Z] [fetching: christopher-pauli-219849] undefined
+[2025-09-15T20:17:52.435Z] [fetching: christian-protz-1238338] undefined
+[2025-09-15T20:17:52.553Z] [fetching: phillipp-seifert-311770] undefined
+[2025-09-15T20:17:52.680Z] [fetching: patrick-fuhrmann-280569] undefined
+[2025-09-15T20:17:52.809Z] [fetching: nico-balschun-1032712] undefined
+[2025-09-15T20:17:52.939Z] [fetching: erik-dobierzin-311776] undefined
+[2025-09-15T20:17:53.120Z] [Keine passende Saison für erik-dobierzin-311776] undefined
+[2025-09-15T20:17:53.120Z] [fetching: leon-gottschild-808635] undefined
+[2025-09-15T20:17:53.268Z] [fetching: etienne-noel-kalkofen-1010387] undefined
+[2025-09-15T20:17:53.420Z] [fetching: claas-schmeisser-552801] undefined
+[2025-09-15T20:17:53.559Z] [fetching: daniel-albert-280580] undefined
+[2025-09-15T20:17:53.692Z] [fetching: tom-balschun-1952247] undefined
+[2025-09-15T20:17:53.818Z] [fetching: tino-lai-280591] undefined
+[2025-09-15T20:17:53.952Z] [fetching: christoph-scholz-311769] undefined
+[2025-09-15T20:17:54.087Z] [fetching: elias-just-815511] undefined
+[2025-09-15T20:17:54.232Z] [fetching: niklas-beier-1032695] undefined
+[2025-09-15T20:17:54.354Z] [fetching: samuel-jack-borrmann-1328730] undefined
+[2025-09-15T20:17:54.488Z] [fetching: andre-irl-273941] undefined
+[2025-09-15T20:17:54.564Z] [Keine passende Saison für andre-irl-273941] undefined
+[2025-09-15T20:17:54.565Z] [fetching: sebastian-krohne-362388] undefined
+[2025-09-15T20:17:54.645Z] [Keine passende Saison für sebastian-krohne-362388] undefined
+[2025-09-15T20:17:54.645Z] [fetching: christoph-freyer-723208] undefined
+[2025-09-15T20:17:54.793Z] [fetching: luca-jena-1010377] undefined
+[2025-09-15T20:17:54.930Z] [fetching: niclas-andreas-weissenborn-2244840] undefined
+[2025-09-15T20:17:55.079Z] [fetching: nick-pohle-1312665] undefined
+[2025-09-15T20:17:55.269Z] [fetching: aaron-beier-2079501] undefined
+[2025-09-15T20:17:55.392Z] [Ole Friedrich] undefined
+[2025-09-15T20:17:55.394Z] [Christopher Pauli] undefined
+[2025-09-15T20:17:55.395Z] [Christian Protz] undefined
+[2025-09-15T20:17:55.395Z] [Phillip Seifert] undefined
+[2025-09-15T20:17:55.395Z] [Patrick Fuhrmann] undefined
+[2025-09-15T20:17:55.396Z] [Leon Gottschild] undefined
+[2025-09-15T20:17:55.394Z] [Manuel Lages] undefined
+[2025-09-15T20:17:55.396Z] [Nico Balschun] undefined
+[2025-09-15T20:17:55.397Z] [Claas Schmeißer] undefined
+[2025-09-15T20:17:55.396Z] [Etienne Kalkofen] undefined
+[2025-09-15T20:17:55.398Z] [Tom Balschun] undefined
+[2025-09-15T20:17:55.397Z] [Daniel Albert] undefined
+[2025-09-15T20:17:55.398Z] [Elias Just] undefined
+[2025-09-15T20:17:55.398Z] [Christopher Scholz] undefined
+[2025-09-15T20:17:55.398Z] [Niklas Beier] undefined
+[2025-09-15T20:17:55.398Z] [Tino Lai] undefined
+[2025-09-15T20:17:55.398Z] [Samuel Borrmann] undefined
+[2025-09-15T20:17:55.399Z] [Christoph Freyer] undefined
+[2025-09-15T20:17:55.399Z] [Niklas Weißenborn] undefined
+[2025-09-15T20:17:55.399Z] [Aaron Beier] undefined
+[2025-09-15T20:17:55.399Z] [Luca Jena] undefined
+[2025-09-15T20:17:55.399Z] [Nick Pohle] undefined
+[2025-09-15T20:19:47.347Z] [fetching: https://api.fupa.net/v1/profiles/andreas-ludwig-780952/details] undefined
+[2025-09-15T20:19:47.707Z] [Keine passende Saison für andreas-ludwig-780952] undefined
+[2025-09-15T20:19:47.707Z] [fetching: https://api.fupa.net/v1/profiles/andre-barth-311783/details] undefined
+[2025-09-15T20:19:47.846Z] [Keine passende Saison für andre-barth-311783] undefined
+[2025-09-15T20:19:47.846Z] [fetching: https://api.fupa.net/v1/profiles/ole-friedrich-304836/details] undefined
+[2025-09-15T20:19:47.991Z] [fetching: https://api.fupa.net/v1/profiles/manuel-lages-311781/details] undefined
+[2025-09-15T20:19:48.111Z] [fetching: https://api.fupa.net/v1/profiles/christopher-pauli-219849/details] undefined
+[2025-09-15T20:19:48.232Z] [fetching: https://api.fupa.net/v1/profiles/christian-protz-1238338/details] undefined
+[2025-09-15T20:19:48.365Z] [fetching: https://api.fupa.net/v1/profiles/phillipp-seifert-311770/details] undefined
+[2025-09-15T20:19:48.494Z] [fetching: https://api.fupa.net/v1/profiles/patrick-fuhrmann-280569/details] undefined
+[2025-09-15T20:19:48.625Z] [fetching: https://api.fupa.net/v1/profiles/nico-balschun-1032712/details] undefined
+[2025-09-15T20:19:48.762Z] [fetching: https://api.fupa.net/v1/profiles/erik-dobierzin-311776/details] undefined
+[2025-09-15T20:19:48.905Z] [Keine passende Saison für erik-dobierzin-311776] undefined
+[2025-09-15T20:19:48.905Z] [fetching: https://api.fupa.net/v1/profiles/leon-gottschild-808635/details] undefined
+[2025-09-15T20:19:49.033Z] [fetching: https://api.fupa.net/v1/profiles/etienne-noel-kalkofen-1010387/details] undefined
+[2025-09-15T20:19:49.164Z] [fetching: https://api.fupa.net/v1/profiles/claas-schmeisser-552801/details] undefined
+[2025-09-15T20:19:49.281Z] [fetching: https://api.fupa.net/v1/profiles/daniel-albert-280580/details] undefined
+[2025-09-15T20:19:49.418Z] [fetching: https://api.fupa.net/v1/profiles/tom-balschun-1952247/details] undefined
+[2025-09-15T20:19:49.539Z] [fetching: https://api.fupa.net/v1/profiles/tino-lai-280591/details] undefined
+[2025-09-15T20:19:49.677Z] [fetching: https://api.fupa.net/v1/profiles/christoph-scholz-311769/details] undefined
+[2025-09-15T20:19:49.802Z] [fetching: https://api.fupa.net/v1/profiles/elias-just-815511/details] undefined
+[2025-09-15T20:19:49.948Z] [fetching: https://api.fupa.net/v1/profiles/niklas-beier-1032695/details] undefined
+[2025-09-15T20:19:50.065Z] [fetching: https://api.fupa.net/v1/profiles/samuel-jack-borrmann-1328730/details] undefined
+[2025-09-15T20:19:50.190Z] [fetching: https://api.fupa.net/v1/profiles/andre-irl-273941/details] undefined
+[2025-09-15T20:19:50.267Z] [Keine passende Saison für andre-irl-273941] undefined
+[2025-09-15T20:19:50.268Z] [fetching: https://api.fupa.net/v1/profiles/sebastian-krohne-362388/details] undefined
+[2025-09-15T20:19:50.344Z] [Keine passende Saison für sebastian-krohne-362388] undefined
+[2025-09-15T20:19:50.345Z] [fetching: https://api.fupa.net/v1/profiles/christoph-freyer-723208/details] undefined
+[2025-09-15T20:19:50.477Z] [fetching: https://api.fupa.net/v1/profiles/luca-jena-1010377/details] undefined
+[2025-09-15T20:19:50.598Z] [fetching: https://api.fupa.net/v1/profiles/niclas-andreas-weissenborn-2244840/details] undefined
+[2025-09-15T20:19:50.727Z] [fetching: https://api.fupa.net/v1/profiles/nick-pohle-1312665/details] undefined
+[2025-09-15T20:19:50.842Z] [fetching: https://api.fupa.net/v1/profiles/aaron-beier-2079501/details] undefined
+[2025-09-15T20:19:50.956Z] [Ole Friedrich] undefined
+[2025-09-15T20:19:50.958Z] [Christian Protz] undefined
+[2025-09-15T20:19:50.959Z] [Phillip Seifert] undefined
+[2025-09-15T20:19:50.959Z] [Patrick Fuhrmann] undefined
+[2025-09-15T20:19:50.958Z] [Christopher Pauli] undefined
+[2025-09-15T20:19:50.958Z] [Manuel Lages] undefined
+[2025-09-15T20:19:50.959Z] [Nico Balschun] undefined
+[2025-09-15T20:19:50.960Z] [Etienne Kalkofen] undefined
+[2025-09-15T20:19:50.961Z] [Daniel Albert] undefined
+[2025-09-15T20:19:50.960Z] [Claas Schmeißer] undefined
+[2025-09-15T20:19:50.961Z] [Tom Balschun] undefined
+[2025-09-15T20:19:50.959Z] [Leon Gottschild] undefined
+[2025-09-15T20:19:50.961Z] [Christopher Scholz] undefined
+[2025-09-15T20:19:50.962Z] [Elias Just] undefined
+[2025-09-15T20:19:50.962Z] [Niklas Beier] undefined
+[2025-09-15T20:19:50.961Z] [Tino Lai] undefined
+[2025-09-15T20:19:50.962Z] [Samuel Borrmann] undefined
+[2025-09-15T20:19:50.962Z] [Christoph Freyer] undefined
+[2025-09-15T20:19:50.963Z] [Niklas Weißenborn] undefined
+[2025-09-15T20:19:50.963Z] [Aaron Beier] undefined
+[2025-09-15T20:19:50.962Z] [Luca Jena] undefined
+[2025-09-15T20:19:50.963Z] [Nick Pohle] undefined
+[2025-09-15T20:23:18.651Z] [fetching: https://api.fupa.net/v1/profiles/andreas-ludwig-780952/details] undefined
+[2025-09-15T20:23:44.451Z] [fetching: https://api.fupa.net/v1/profiles/andreas-ludwig-780952/details] undefined
+[2025-09-15T20:23:53.147Z] [Keine passende Saison für andreas-ludwig-780952] undefined
+[2025-09-15T20:23:53.147Z] [fetching: https://api.fupa.net/v1/profiles/andre-barth-311783/details] undefined
+[2025-09-15T20:24:59.695Z] [Keine passende Saison für andre-barth-311783] undefined
+[2025-09-15T20:25:03.222Z] [fetching: https://api.fupa.net/v1/profiles/ole-friedrich-304836/details] undefined

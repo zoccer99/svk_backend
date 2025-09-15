@@ -1,36 +1,41 @@
 const fupaIds = require("../data/fupaPlayers.json");
 
-const fetch = (...args) => import("node-fetch").then(({ default: fetch }) => fetch(...args));
+const fetch = (...args) =>
+  import("node-fetch").then(({ default: fetch }) => fetch(...args));
 var cron = require("node-cron");
 const dbo = require("../db/conn");
 const { logDbAction } = require("../data/logging/logger");
 
 const fetchPlayer = async (player) => {
   const SEASON_YEAR = new Date().getFullYear();
-  const NEXT_YEAR = (SEASON_YEAR + 1).toString().slice()
+  const NEXT_YEAR = (SEASON_YEAR + 1).toString().slice();
   const playerId = fupaIds[player];
   const queryUrl = "https://api.fupa.net/v1/profiles/" + playerId + "/details";
   var payload = null;
   try {
-    console.log(`fetching: ${playerId}`);
+    logDbAction(`fetching: ${queryUrl}`);
     const response = await fetch(queryUrl);
+
     payload = await response.json();
   } catch (err) {
-    console.log(`ERROR: fetching -> ${err}`);
+    logDbAction(`ERROR: fetching -> ${err}`);
   }
 
   let season = payload.playerRole?.seasons?.find(
-    (s) => s.team && s.team.slug === `sv-kretzschau-m1-${SEASON_YEAR}-26`
+    (s) =>
+      s.team &&
+      s.team.slug ===
+        `sv-kretzschau-m1-${SEASON_YEAR}-${(SEASON_YEAR + 1)    // 2026 -> 26
+          .toString()
+          .slice(-2)}`
   );
 
   if (!season) {
-    console.log(`Keine passende Saison für ${playerId}`);
+    logDbAction(`Keine passende Saison für ${playerId}`);
     return null;
   }
 
-  var stats = season.statistics
-
-  
+  var stats = season.statistics;
 
   const matches = stats.matches;
   const goals = stats.goals;
@@ -56,7 +61,7 @@ const fetchAllPlayers = async () => {
 const updateDb = (players) => {
   let db_connect = dbo.getDb();
   for (let player in players) {
-    console.log(players[player]["name"]);
+    logDbAction(players[player]["name"]);
     db_connect.collection("PlayerStats").updateOne(
       { name: players[player].name },
       {
@@ -74,14 +79,12 @@ module.exports = {
   cronJob: cron.schedule(
     "0 10 * * 1",
     async () => {
-
       logDbAction("PROCESS", "started scraping..");
       const players = await fetchAllPlayers();
-      logDbAction("PROCESS", "updating DB..")
+      logDbAction("PROCESS", "updating DB..");
 
       updateDb(players);
-      logDbAction("PROCESS", "updated db succesfully")
-
+      logDbAction("PROCESS", "updated db succesfully");
     },
     {
       scheduled: false,
